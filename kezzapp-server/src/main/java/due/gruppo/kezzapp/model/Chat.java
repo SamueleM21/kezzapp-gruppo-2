@@ -26,10 +26,14 @@ public class Chat implements Serializable {
     @Column
     private String sessione;
 
-    public Chat(Long id, String nickname, String sessione) {
-        this.id = id;
+
+    public Chat() {
+        this.sessione = String.valueOf(id);
+    }
+
+    public Chat(String nickname) {
         this.nickname = nickname;
-        this.sessione = sessione;
+        this.sessione = String.valueOf(id);
     }
 
     public Long getId() {
@@ -59,9 +63,6 @@ public class Chat implements Serializable {
     @Override
     public String toString() {
         return "Chat{" + "id=" + id + ", nickname=" + nickname + ", sessione=" + sessione + '}';
-    }
-
-    public Chat() {
     }
 
 }

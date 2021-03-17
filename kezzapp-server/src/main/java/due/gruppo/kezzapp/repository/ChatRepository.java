@@ -8,10 +8,15 @@ package due.gruppo.kezzapp.repository;
 import due.gruppo.kezzapp.model.Chat;
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import java.util.List;
+
 /**
  *
  * @author lenovo
  */
 public interface ChatRepository extends JpaRepository<Chat, Long>{
-    
+
+    boolean findByNickname(String s);
+
+    Chat findBySessione(String sessione);
 }

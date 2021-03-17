@@ -31,8 +31,7 @@ public class Messaggio implements Serializable {
     public Messaggio() {
     }
 
-    public Messaggio(Long id, String testo, String aliasDestinatario, String aliasMittente) {
-        this.id = id;
+    public Messaggio(String testo, String aliasDestinatario, String aliasMittente) {
         this.testo = testo;
         this.aliasDestinatario = aliasDestinatario;
         this.aliasMittente = aliasMittente;

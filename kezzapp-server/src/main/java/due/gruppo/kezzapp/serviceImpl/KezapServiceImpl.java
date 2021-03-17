@@ -9,6 +9,8 @@ import due.gruppo.kezzapp.dto.InviaMessaggioDto;
 import due.gruppo.kezzapp.dto.RegistrazioneDto;
 import due.gruppo.kezzapp.dto.RichiediMessaggiDto;
 import due.gruppo.kezzapp.dto.RichiediRegistrazioneDto;
+import due.gruppo.kezzapp.model.Chat;
+import due.gruppo.kezzapp.model.Messaggio;
 import due.gruppo.kezzapp.repository.ChatRepository;
 import due.gruppo.kezzapp.repository.MessaggioRepository;
 import due.gruppo.kezzapp.service.KezappService;
@@ -23,28 +25,64 @@ import org.springframework.stereotype.Service;
 public class KezapServiceImpl implements KezappService {
 
     @Autowired
-    MessaggioRepository messaggiorepository;
+    MessaggioRepository messaggioRepository;
     @Autowired
     ChatRepository chatRepository;
 
     @Override
     public RegistrazioneDto registrazione(RichiediRegistrazioneDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        RegistrazioneDto dtoR = new RegistrazioneDto();
+        if (chatRepository.findByNickname(dto.getNickname())) {
+            dtoR.setSessione(null);
+            return dtoR;
+        } else {
+            Chat chat = new Chat();
+            chatRepository.save(chat);
+            dtoR.setSessione(chat.getSessione());
+            return dtoR;
+        }
     }
 
     @Override
     public RegistrazioneDto inviaUno(InviaMessaggioDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Chat chat = chatRepository.findBySessione(dto.getSessione());
+        RegistrazioneDto dtoR = new RegistrazioneDto();
+
+        if(chat == null) {
+            return dtoR;
+        } else {
+            Messaggio messaggio = new Messaggio(dto.getMessaggio(), dto.getDestinatario(), chat.getNickname());
+            messaggioRepository.save(messaggio);
+            dtoR.setSessione(chat.getSessione());
+            dtoR.setContatti(chatRepository.findAll());
+            dtoR.setMessaggi(messaggioRepository.findByAliasDestinatarioOrAliasDestinatarioIsNull(chat.getNickname()));
+            return dtoR;
+        }
     }
 
     @Override
     public RegistrazioneDto inviaDto(InviaMessaggioDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Chat chat = chatRepository.findBySessione(dto.getSessione());
+        RegistrazioneDto dtoR = new RegistrazioneDto();
+        if(chat == null) {
+            return dtoR;
+        } else {
+            Messaggio messaggio = new Messaggio(dto.getMessaggio(), null, chat.getNickname());
+            messaggioRepository.save(messaggio);
+            dtoR.setSessione(chat.getSessione());
+            dtoR.setContatti(chatRepository.findAll());
+            dtoR.setMessaggi(messaggioRepository.findByAliasDestinatarioOrAliasDestinatarioIsNull(chat.getNickname()));
+            return dtoR;
+        }
     }
 
     @Override
     public RegistrazioneDto aggiorna(RichiediMessaggiDto dto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        Chat chat = chatRepository.findBySessione(dto.getSessione());
+        RegistrazioneDto dtoR = new RegistrazioneDto();
+        dtoR.setContatti(chatRepository.findAll());
+        dtoR.setMessaggi(messaggioRepository.findByAliasDestinatarioOrAliasDestinatarioIsNull(chat.getNickname()));
+        return dtoR;
     }
 
 }
