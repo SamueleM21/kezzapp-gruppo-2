@@ -15,8 +15,10 @@ export class AppComponent {
   messaggi: Array<Messaggio>;
   contatti: Array<Chat>;
 
-  registrazione(){
+  regNickVisible: boolean = true;
 
+  registrazione(){
+    this.regNickVisible = false;
   }
 
   inviaATutti(){

@@ -1,14 +1,13 @@
-<input type ="text" placeholder="nickname" [(ngModel)] = "nickname">
-<button (click) = "registrazione()">registrazione</button>
+<div *ngIf="regNickVisible">
+  <input type ="text" placeholder="nickname" [(ngModel)] = "nickname">
+  <button (click) = "registrazione()">registrazione</button>
+</div>
 <br>
-
 <input type ="text" placeholder="messaggio" [(ngModel)] = "messaggio">
 <button (click) = "inviaATutti()">invia a tutti</button>
 <br>
-
 Contatti
 <br>
-
 <table>
   <tr>
     <th> nickname </th>
@@ -22,12 +21,9 @@ Contatti
   </td>
   </tr>
 </table>
-
 <br>
-
 messaggi ricevuti
 <button (click) = "aggiorna()">aggiorna</button>
-
 <br>
 <table>
   <tr> 
