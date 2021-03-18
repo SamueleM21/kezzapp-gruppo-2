@@ -2,23 +2,30 @@ button {
     margin-top: 15px;
     margin-bottom: 15px;
     margin-left: 10px;
-    background-color: rgb(52, 214, 66);
+    background-color: rgb(52, 168, 214);
     border-color: rgb(16, 17, 16);
     border-style: solid;
-    font-family: "Copperplate";
-    padding: 5px 20px;
+    font-family: "Verdana";
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
+    
 }
 
 input {
-    margin-top: 10px;
+    margin-top: 20px;
     margin-left: 0px;
     background-color: rgba(125, 143, 143, 0.54);
     border-color: rgb(0, 0, 0);
     border-style: outset;
     font-size: 12px;
-    font-family: "Copperplate";
+    font-family: "Verdana";
     border-width: 2px;
-    padding: 5px 40px;
+    font-size: 15px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
 }
 
 ::placeholder {
@@ -28,20 +35,33 @@ input {
 #a {
     margin-left: 300px;
     margin-top: 150px;
-    background-color: lightgrey;
+    background-image: linear-gradient(rgb(98, 0, 255), yellow);
     width: 380px;
     border: 15px solid rgb(41, 43, 41);
     padding: 150px;
 }
 
 #agg {
-    margin-top: 5px;
+    margin-top: 4px;
     margin-bottom: 15px;
-    margin-left: 350px;
-    background-color: rgb(52, 214, 66);
+    margin-left: 150px;
+    background-color: rgb(52, 168, 214);
     border-color: rgb(16, 17, 16);
     border-style: solid;
-    font-family: "Copperplate";
-    padding: 5px 20px;
+    font-family: "Verdana";
+    font-size: 18px;
+    background-color: white;
+    color: black;
+    border: 2px solid #4CAF50;
 }
+ h4 {
+    font-family: "Verdana";
+ }
+
+table, th, td {
+    border: 1px solid black;
+    font-family: "Verdana";
+    margin-left: 150px;
+  }
+
 
