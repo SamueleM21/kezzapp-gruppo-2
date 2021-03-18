@@ -1,40 +1,42 @@
-<div *ngIf="regNickVisible">
-  <input type ="text" placeholder="nickname" [(ngModel)] = "nickname">
-  <button (click) = "registrazione()">registrazione</button>
+<div id="a">
+  <div *ngIf="regNickVisible">
+    <input type="text" placeholder="nickname" [(ngModel)]="nickname">
+    <button (click)="registrazione()">registrazione</button>
+  </div>
+  <br>
+  <input type="text" placeholder="messaggio" [(ngModel)]="messaggio">
+  <button (click)="inviaATutti()">invia a tutti</button>
+  <br>
+  <h4 style="text-align:center;">Contatti</h4>
+  <br>
+  <table>
+    <tr>
+      <th> nickname </th>
+    </tr>
+    <tr *ngFor="let c of contatti">
+      <td>
+        {{c.nickname}}
+      </td>
+      <td>
+        <button (click)="inviaSingolo(c)"> invia </button>
+      </td>
+    </tr>
+  </table>
+  <br>
+  <h4 style="text-align:center;"> Messaggi ricevuti</h4>
+  <button id="agg" (click)="aggiorna()">aggiorna</button>
+  <br>
+  <table>
+    <tr>
+      <th>messaggi</th>
+    </tr>
+    <tr *ngFor="let m of messaggi">
+      <td>
+        {{m.aliasMittente}}
+      </td>
+      <td>
+        {{m.testo}}
+      </td>
+    </tr>
+  </table>
 </div>
-<br>
-<input type ="text" placeholder="messaggio" [(ngModel)] = "messaggio">
-<button (click) = "inviaATutti()">invia a tutti</button>
-<br>
-Contatti
-<br>
-<table>
-  <tr>
-    <th> nickname </th>
-  </tr>
-  <tr *ngFor="let c of contatti">
-  <td> 
-    {{c.nickname}}
-  </td>
-  <td>
-    <button (click) = "inviaSingolo(c)"> invia </button>
-  </td>
-  </tr>
-</table>
-<br>
-messaggi ricevuti
-<button (click) = "aggiorna()">aggiorna</button>
-<br>
-<table>
-  <tr> 
-  <th>messaggi</th>
-  </tr>
-  <tr *ngFor="let m of messaggi">
-    <td>
-      {{m.aliasMittente}}
-    </td>
-    <td>
-      {{m.testo}}
-    </td>
-  </tr>
-</table>
