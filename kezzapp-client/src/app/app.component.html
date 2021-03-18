@@ -31,7 +31,10 @@ messaggi ricevuti
   </tr>
   <tr *ngFor="let m of messaggi">
     <td>
-      {{messaggi}}
+      {{m.aliasMittente}}
+    </td>
+    <td>
+      {{m.testo}}
     </td>
   </tr>
 </table>
