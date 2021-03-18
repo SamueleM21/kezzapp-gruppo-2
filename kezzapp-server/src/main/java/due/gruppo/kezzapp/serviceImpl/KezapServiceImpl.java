@@ -37,6 +37,9 @@ public class KezapServiceImpl implements KezappService {
             return dtoR;
         } else {
             Chat chat = new Chat();
+            chat.setNickname(dto.getNickname());
+            chatRepository.save(chat);
+            chat = chatRepository.findByNickname(dto.getNickname());
             chat.setSessione(String.valueOf(chat.getId()));
             chatRepository.save(chat);
             dtoR.setSessione(chat.getSessione());
@@ -48,7 +51,6 @@ public class KezapServiceImpl implements KezappService {
     public RegistrazioneDto inviaUno(InviaMessaggioDto dto) {
         Chat chat = chatRepository.findBySessione(dto.getSessione());
         RegistrazioneDto dtoR = new RegistrazioneDto();
-
         if(chat == null) {
             return dtoR;
         } else {
@@ -85,5 +87,4 @@ public class KezapServiceImpl implements KezappService {
         dtoR.setMessaggi(messaggioRepository.findByAliasDestinatarioOrAliasDestinatarioIsNull(chat.getNickname()));
         return dtoR;
     }
-
 }

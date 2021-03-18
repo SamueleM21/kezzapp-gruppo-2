@@ -22,12 +22,12 @@ export class AppComponent {
   contatti: Array<Chat>;
   sessione: string;
 
-  regNickVisible: boolean = true;
+  regNickVisible = true;
 
   constructor(private http: HttpClient) { }
 
 
-  registrazione() {
+  registrazione(): void {
     const dto: RichiediRegistrazioneDto = new RichiediRegistrazioneDto();
     dto.nickname = this.nickname;
     const oss: Observable<RegistrazioneDto> = this.http
@@ -37,10 +37,12 @@ export class AppComponent {
       this.messaggi = v.messaggi;
       this.sessione = v.sessione;
     });
-    this.regNickVisible = false;
+    if (this.sessione != null){
+      this.regNickVisible = false;
+    }
   }
 
-  inviaATutti() {
+  inviaATutti(): void {
     const dto: InviaMessaggioDto = new InviaMessaggioDto();
     dto.sessione = this.sessione;
     dto.destinatario = null;
@@ -54,7 +56,7 @@ export class AppComponent {
     });
   }
 
-  inviaSingolo(c: Chat) {
+  inviaSingolo(c: Chat): void {
     const dto: InviaMessaggioDto = new InviaMessaggioDto();
     dto.sessione = this.sessione;
     dto.destinatario = c.nickname;
@@ -68,7 +70,7 @@ export class AppComponent {
     });
   }
 
-  aggiorna() {
+  aggiorna(): void {
     const dto: RichiediMessaggiDto = new RichiediMessaggiDto();
     dto.sessione = this.sessione;
     const oss: Observable<RegistrazioneDto> = this.http
