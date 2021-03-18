@@ -33,13 +33,12 @@ export class AppComponent {
     const oss: Observable<RegistrazioneDto> = this.http
       .post<RegistrazioneDto>('http://localhost:8080/registrazione', dto);
     oss.subscribe(v => {
+      console.log(v);
       this.contatti = v.contatti;
       this.messaggi = v.messaggi;
       this.sessione = v.sessione;
     });
-    if (this.sessione != null){
-      this.regNickVisible = false;
-    }
+    this.regNickVisible = false;
   }
 
   inviaATutti(): void {
@@ -52,13 +51,13 @@ export class AppComponent {
     oss.subscribe(v => {
       this.contatti = v.contatti;
       this.messaggi = v.messaggi;
-      this.sessione = v.sessione;
     });
   }
 
   inviaSingolo(c: Chat): void {
     const dto: InviaMessaggioDto = new InviaMessaggioDto();
     dto.sessione = this.sessione;
+    console.log(dto);
     dto.destinatario = c.nickname;
     dto.messaggio = this.messaggio;
     const oss: Observable<RegistrazioneDto> = this.http
@@ -66,7 +65,6 @@ export class AppComponent {
     oss.subscribe(v => {
       this.contatti = v.contatti;
       this.messaggi = v.messaggi;
-      this.sessione = v.sessione;
     });
   }
 
@@ -78,7 +76,6 @@ export class AppComponent {
     oss.subscribe(v => {
       this.contatti = v.contatti;
       this.messaggi = v.messaggi;
-      this.sessione = v.sessione;
     });
 
   }

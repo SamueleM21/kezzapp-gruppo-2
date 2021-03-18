@@ -38,11 +38,12 @@ public class KezapServiceImpl implements KezappService {
         } else {
             Chat chat = new Chat();
             chat.setNickname(dto.getNickname());
-            chatRepository.save(chat);
-            chat = chatRepository.findByNickname(dto.getNickname());
+            chat = chatRepository.save(chat);
             chat.setSessione(String.valueOf(chat.getId()));
             chatRepository.save(chat);
             dtoR.setSessione(chat.getSessione());
+            dtoR.setContatti(chatRepository.findAll());
+            dtoR.setMessaggi(messaggioRepository.findByAliasDestinatarioOrAliasDestinatarioIsNull(chat.getNickname()));
             return dtoR;
         }
     }
