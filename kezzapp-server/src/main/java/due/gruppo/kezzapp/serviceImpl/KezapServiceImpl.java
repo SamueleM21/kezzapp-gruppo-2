@@ -32,11 +32,12 @@ public class KezapServiceImpl implements KezappService {
     @Override
     public RegistrazioneDto registrazione(RichiediRegistrazioneDto dto) {
         RegistrazioneDto dtoR = new RegistrazioneDto();
-        if (chatRepository.findByNickname(dto.getNickname())) {
+        if (chatRepository.findByNickname(dto.getNickname())!= null) {
             dtoR.setSessione(null);
             return dtoR;
         } else {
             Chat chat = new Chat();
+            chat.setSessione(String.valueOf(chat.getId()));
             chatRepository.save(chat);
             dtoR.setSessione(chat.getSessione());
             return dtoR;

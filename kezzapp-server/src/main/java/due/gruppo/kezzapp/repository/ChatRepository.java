@@ -16,7 +16,7 @@ import java.util.List;
  */
 public interface ChatRepository extends JpaRepository<Chat, Long>{
 
-    boolean findByNickname(String s);
+    Chat findByNickname(String s);
 
     Chat findBySessione(String sessione);
 }

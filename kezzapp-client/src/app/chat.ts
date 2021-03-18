@@ -1,5 +1,5 @@
-export class Chat{
-    private sessione: string;
-    private id: number;
-    private nickname: string;
+export class Chat {
+    sessione: string;
+    id: number;
+    nickname: string;
 }
