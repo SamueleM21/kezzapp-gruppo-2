@@ -1,15 +1,18 @@
 button {
     margin-top: 15px;
     margin-bottom: 15px;
-    margin-left: 10px;
-    background-color: rgb(52, 168, 214);
     border-color: rgb(16, 17, 16);
     border-style: solid;
     font-family: "Verdana";
     font-size: 18px;
     background-color: white;
     color: black;
-    border: 2px solid #4CAF50;
+    border:outset rgb(112, 108, 108);
+    border-radius: 35px;
+    font-variant: small-caps;
+    background: transparent;
+    
+       
     
 }
 
@@ -25,7 +28,9 @@ input {
     font-size: 15px;
     background-color: white;
     color: black;
-    border: 2px solid #4CAF50;
+    border:outset rgb(112, 108, 108);
+    border-radius: 35px;
+    font-variant: small-caps;
 }
 
 ::placeholder {
@@ -35,33 +40,32 @@ input {
 #a {
     margin-left: 300px;
     margin-top: 150px;
-    background-image: linear-gradient(rgb(98, 0, 255), yellow);
+    background-image: linear-gradient(to right, rgba(165, 14, 165, 0.342), rgba(60, 255, 0, 0.233));
     width: 380px;
     border: 15px solid rgb(41, 43, 41);
     padding: 150px;
-}
+    border:outset rgb(112, 108, 108);
+    font-variant: small-caps;
+    background-blend-mode: transparent;
+    
+    }
 
 #agg {
     margin-top: 4px;
     margin-bottom: 15px;
     margin-left: 150px;
-    background-color: rgb(52, 168, 214);
-    border-color: rgb(16, 17, 16);
-    border-style: solid;
     font-family: "Verdana";
     font-size: 18px;
-    background-color: white;
-    color: black;
-    border: 2px solid #4CAF50;
 }
  h4 {
     font-family: "Verdana";
+    text-decoration: overline;
  }
 
 table, th, td {
-    border: 1px solid black;
+
+    border:outset rgb(112, 108, 108);
     font-family: "Verdana";
-    margin-left: 150px;
-  }
-
-
+    margin-left: 55px;
+    font-variant: small-caps;
+}
